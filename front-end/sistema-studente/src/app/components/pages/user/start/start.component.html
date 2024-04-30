@@ -1,0 +1,91 @@
+<div class="bootstrap-wrapper" *ngIf = "!isSended">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Instrucciones-->
+        <mat-card style = "margin-top: 70px;">
+          <mat-card-content>
+            <h3><b>Istruzioni</b></h3>
+            <ul>
+              <li>Non aggiornare la pagina, senno cambierano le domande</li>
+              <li>Non cambiare di scheda</li>
+              <li>non puo cambiare di pagina</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-7">
+        <!--Preguntas-->
+        <ng-container *ngIf = "domande">
+          <h1 class="mt20">
+            In corso <b>{{ domande[0].esame.titolo }}</b>
+          </h1>
+        </ng-container>
+
+        <mat-card *ngFor = "let p of domande;let i = index">
+          <mat-card-content>
+            <p><b>{{ i+1 }}) </b> <span [innerHTML] = "p.contenuto"></span></p>
+            <mat-divider></mat-divider>
+            <div class="row mt20">
+              <div class="col-md-8 mt10">
+                <input [(ngModel)] = "p.rispostaData" type="radio" [value] = "p.opzione1" name = {{i}}> {{ p.opzione1 }}
+              </div>
+              <div class="col-md-8 mt10">
+                <input [(ngModel)] = "p.rispostaData" type="radio" [value] = "p.opzione2" name = {{i}}> {{ p.opzione2 }}
+              </div>
+              <div class="col-md-8 mt10">
+                <input [(ngModel)] = "p.rispostaData" type="radio" [value] = "p.opzione3" name = {{i}}> {{ p.opzione3 }}
+              </div>
+              <div class="col-md-8 mt10">
+                <input [(ngModel)] = "p.rispostaData" type="radio" [value] = "p.opzione4" name = {{i}}> {{ p.opzione4 }}
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="container text-center mt20 mb20">
+          <button (click) = "inviareTest()" mat-raised-button color="primary">Inviare test</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <!--Progreso-->
+        <mat-card style ="margin-top:70px;">
+          <mat-card-header>
+            <mat-card-title>
+              Timer
+            </mat-card-title>
+            <mat-card-subtitle>
+              Il test sarà mandato in automatico quanto il conto alla rovescia arriva a 0:00
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h1 class="text-center">{{ getFormattedHour() }}</h1>
+            <mat-spinner mode="determinate" style="margin: auto;" [value] = "(timer/(this.domande?.length * 2 * 60)*100)"></mat-spinner>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bootstrap-wrapper" *ngIf = "isSended">
+  <div class="container mt20">
+    <div class="col-md-6 offset-md-3">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Risultato del test
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <h1>Punti ottenuti : {{ puntiOttenuti }}</h1>
+          <h1>Risposte giuste : {{ risposteGiuste }}</h1>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <button (click) = "printPage()" mat-raised-button color="primary">Stampare</button>
+          <button mat-raised-button color="accent" [routerLink] = "'/user/0'">Inizia</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

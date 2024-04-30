@@ -1,0 +1,41 @@
+<mat-card style="margin-left: 10px;">
+  <h1>Detagli del profilo</h1>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="text-center">
+          <img src="../../../../assets/profile.svg" alt="image di profilo" class="profile-image">
+          <h1 class="mt20">{{ user.name }} {{user.surname}} </h1>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offsed-md-1">
+            <table class="table text-center">
+              <tr>
+                <td>Nome Utente</td>
+                <td>{{user.name}}</td>
+              </tr>
+              <tr>
+                <td>Id</td>
+                <td>{{user.id}}</td>
+              </tr>
+              <tr>
+                <td>Telefono</td>
+                <td>{{user.phone}}</td>
+              </tr>
+              <tr>
+                <td>Role</td>
+                <td>{{ user.authorities[0].authority }}</td>
+              </tr>
+              <tr>
+                <td>Stato</td>
+                <td>{{ user.enabled ? "Activo" : "No activo"}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>

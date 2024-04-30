@@ -1,0 +1,25 @@
+<mat-card class="mt10" *ngFor = "let e of esami">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        {{ e.titolo }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ e.categoria.titolo }}
+      </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" [routerLink] = "'/admin/vedere-domande/'+e.esameId+'/'+e.titolo">Domande</button>
+      <button mat-stroked-button color="primary" class="ml20">P.Max {{ e.puntiMax }}</button>
+      <button mat-stroked-button color="primary" class="ml20">Domande {{ e.numeDomande }}</button>
+      <button [routerLink] = "'/admin/esame/'+e.esameId" mat-flat-button color="primary" class="ml20">Aggiornare</button>
+      <button mat-flat-button color="primary" class="ml20">Tentativi</button>
+      <button mat-flat-button color="warn" class="ml10" (click) = "deleteEsame(e.esameId)">Cancellare</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+<div class="container text-center mt20">
+  <button routerLink="/admin/add-esami" mat-raised-button color="primary">Aggiunge Domande</button>
+</div>

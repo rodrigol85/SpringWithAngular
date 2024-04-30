@@ -1,0 +1,23 @@
+.text{
+  height: 180%;
+  width: 200%;
+  background-image: url('/assets/welco.jpg');
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 160px;
+  display: flex;
+
+  align-items: center;
+  font-family: "Alfa Slab One", serif;
+  background-color: gray;
+
+
+}
+
+button{
+  margin-top: 15px;
+}
+
+

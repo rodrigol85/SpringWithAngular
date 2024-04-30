@@ -1,0 +1,10 @@
+.container-button{
+  display: flex;
+  justify-content: space-between;
+}
+
+.title
+{
+  flex-grow: 1;
+  text-align: left;
+}

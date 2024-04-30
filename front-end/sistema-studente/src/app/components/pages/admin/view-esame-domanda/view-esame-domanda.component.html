@@ -1,0 +1,49 @@
+<h1 class="mt20">Domande di {{ titolo }}</h1>
+<div class="bootstrap-wrapper">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container text-center">
+        <button
+        mat-raised-button
+        color="primary"
+        [routerLink] = "'/admin/add-domanda/'+esameId+'/'+titolo">
+        Aggiungi domanda
+        </button>
+      </div>
+      <mat-card *ngFor = "let p of domande; let i = index" class="mt20">
+        <mat-card-content>
+          <p>
+            <b>{{ i + 1}} )</b>
+            <span class="ml20" [innerHTML] = "p.contenuto"></span>
+          </p>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p>1)<b> {{p.opzione1 }}</b></p>
+              </div>
+              <div class="col-md-6">
+                <p>2)<b> {{ p.opzione2 }}</b></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <p>3)<b> {{ p.opzione3 }}</b></p>
+              </div>
+              <div class="col-md-6">
+                <p>4)<b> {{ p.opzione4 }}</b></p>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <p class="mt20">
+              <b>Risposta corretta : {{ p.risposta }}</b>
+            </p>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click) = "deleteDomanda(p.id)" color="warn">Cancella</button>
+          <button mat-button [routerLink] = "'/admin/domanda/'+p.id" color="primary">Aggiornare</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

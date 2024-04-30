@@ -1,0 +1,45 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt20">
+          <mat-card-header>
+            <mat-card-title>
+              Leggi le istruzioni  prima di iniziare il test
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-subtitle>Paso a paso</mat-card-subtitle>
+          <mat-card-content class="ml30">
+            <h1>{{ esame.titolo }}</h1>
+            <p>{{ esame.descrizione}}</p>
+            <mat-divider></mat-divider>
+          <br>
+          <h1>Istruzioni importanti</h1>
+
+          <ul>
+            <li>Il test è soltanto per fini di pratica</li>
+            <li>Devi rispondere il test in <b>{{ esame.numeDomande * 2 }} minuti</b></li>
+            <li>Non ci sono limiti di tentativi</li>
+            <li>Ci sono <b>{{ esame.puntiMax/esame.numeDomande}} punti per ogni domanda</b></li>
+          </ul>
+          <mat-divider></mat-divider>
+          <br>
+          <h1>tentativi del test</h1>
+          <ul>
+            <li>Premi il bottone <b>Inizia</b> per cominciare il test</li>
+            <li>Il conto alla rovescia inizia al momento che premi il bottone 'Inizia'</li>
+            <li>Non puoi ricominciare il test se si blocca per alcuna ragione prima di finire</li>
+            <li>Premi il bottone Invia per finire  il test</li>
+            <li>Il risultato verrà emesso automaticamente in formato pdf</li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions class="text-center mb20">
+          <button (click) = "iniziaTest()" mat-raised-button color="primary">
+           Inizia il test
+          </button>
+        </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
